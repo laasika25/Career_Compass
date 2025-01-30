@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Resources</title>
+    <link rel="stylesheet" href="learning-resources.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc; /* Keeps the original background color */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .filter-select {
+            padding: 15px 20px; /* Increased padding */
+            font-size: 20px; /* Increased font size */
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            width: 250px; /* Increased width */
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        #resourceContainer {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .video-section {
+            margin-bottom: 30px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .resource-link {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .resource-link img {
+            width: 120px;
+            height: 90px;
+            margin-right: 15px;
+            border-radius: 8px;
+        }
+
+        .resource-link strong {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0057a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Study Resources</h1>
+        <h1></h>
+
+        <!-- Filter Selection -->
+        <label for="categorySelect">Select Category:</label>
+        <select id="categorySelect" class="filter-select" onchange="filterResources()">
+            
+            <option value="">--Select--</option>
+            <option value="vlsi">VLSI</option>
+            <option value="aiml">AIML</option>
+            <option value="fullstack">Full Stack</option>
+            <option value="communications">Communications</option>
+        </select>
+
+        <div id="resourceContainer">
+            <div class="video-section resource-category">
+                <h2>Video Resources</h2>
+                <ul class="resource-list" id="videoList"></ul>
+            </div>
+        </div>
+
+        <a href="dashboard.html" class="btn">Go Back to Dashboard</a>
+    </div>
+
+    <script>
+        function filterResources() {
+            const category = document.getElementById("categorySelect").value;
+            const resourceContainer = document.getElementById("resourceContainer");
+            const videoList = document.getElementById("videoList");
+            videoList.innerHTML = ""; 
+
+            if (category === "vlsi") {
+                videoList.innerHTML = `
+                    <li class="resource-item">
+                        <a href="https://youtu.be/8WdYWx48ac8?si=v6vYhF_ICNQroeiB" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/8WdYWx48ac8/0.jpg" alt="VLSI Video Thumbnail">
+                            <strong>VLSI Course</strong> - Learn the basics of VLSI.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=I8lHk36sTB4&list=PLFXvEi07abL3LEnEDHdC6jl3Z18Rnt8WX" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/I8lHk36sTB4/0.jpg" alt="VLSI Video Thumbnail">
+                            <strong>Advanced VLSI Concepts</strong> - A deeper dive into VLSI.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=ONU-zFBzlXo&list=PLgwJf8NK-2e6au9bX9P_bA3ywxqigCsaC" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/ONU-zFBzlXo/0.jpg" alt="VLSI Video Thumbnail">
+                            <strong>VLSI Design Fundamentals</strong> - Learn essential VLSI design principles.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=EdbW3suZB5I&list=PL_3xKnVkfI2hcT4DPA7ez9zhZH_8s3uki" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/EdbW3suZB5I/0.jpg" alt="VLSI Video Thumbnail">
+                            <strong>VLSI Tutorial Series</strong> - A complete guide on VLSI.
+                        </a>
+                    </li>`;
+            } else if (category === "aiml") {
+                videoList.innerHTML = `
+                    <li class="resource-item">
+                        <a href="https://youtu.be/6dqAwh2MCg0?si=iHNC1IXhdiGD_73d" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/6dqAwh2MCg0/0.jpg" alt="AIML Video Thumbnail">
+                            <strong>AIML Course</strong> - Learn Artificial Intelligence and Machine Learning.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://youtu.be/1vsmaEfbnoE?si=kyDUJFMwHeW0bGvJ" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/1vsmaEfbnoE/0.jpg" alt="AIML Video Thumbnail">
+                            <strong>Introduction to AIML</strong> - Overview of Artificial Intelligence and Machine Learning.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://youtu.be/AMxtGWcMYd4?si=8ovKkwnhs94bPRvx" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/AMxtGWcMYd4/0.jpg" alt="AIML Video Thumbnail">
+                            <strong>AIML Advanced Topics</strong> - Dive deeper into AIML concepts.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=SvIY166jnWA&list=PLvTTv60o7qj-YAuvf-gDLd3CfJK85QAPv" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/SvIY166jnWA/0.jpg" alt="AIML Video Thumbnail">
+                            <strong>AIML Tutorial Series</strong> - A comprehensive AIML guide.
+                        </a>
+                    </li>`;
+            } else if (category === "fullstack") {
+                videoList.innerHTML = `
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=n1QAhSfKSp0&pp=ygUKZnVsbCBzdGFjaw%3D%3D" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/n1QAhSfKSp0/0.jpg" alt="Full Stack Video Thumbnail">
+                            <strong>Full Stack Development</strong> - Introduction to full stack development.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=7l5UgtWfnw0&t=738s&pp=ygUKZnVsbCBzdGFjaw%3D%3D" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/7l5UgtWfnw0/0.jpg" alt="Full Stack Video Thumbnail">
+                            <strong>Building Full Stack Applications</strong> - Learn how to create full stack apps.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=5-MLMzbUlPY&pp=ygUKZnVsbCBzdGFjaw%3D%3D" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/5-MLMzbUlPY/0.jpg" alt="Full Stack Video Thumbnail">
+                            <strong>Advanced Full Stack Concepts</strong> - Master full stack development.
+                        </a>
+                    </li>`;
+            } else if (category === "communications") {
+                videoList.innerHTML = `
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=W5l2XLGh1ig&pp=ygUeY29tbXVuaWNhdGlvbiBqb2IgIGVsZWN0cm9uaWNz" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/W5l2XLGh1ig/0.jpg" alt="Communications Video Thumbnail">
+                            <strong>Communication Systems</strong> - Learn about communication systems in electronics.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=D3BM011B12Q&list=PLFPjGWfvHy3g0aXQsDrbL08HjLEkAx2Wk" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/D3BM011B12Q/0.jpg" alt="Communications Video Thumbnail">
+                            <strong>Advanced Communication Systems</strong> - Explore advanced concepts in communication.
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://www.youtube.com/watch?v=RrCiJAyEKB0&pp=ygUeY29tbXVuaWNhdGlvbiBqb2IgIGVsZWN0cm9uaWNz" class="resource-link" target="_blank">
+                            <img src="https://img.youtube.com/vi/RrCiJAyEKB0/0.jpg" alt="Communications Video Thumbnail">
+                            <strong>Electronics for Communication</strong> - An overview of electronics in communications.
+                        </a>
+                    </li>`;
+            } 
+
+            resourceContainer.style.display = category ? "block" : "none";
+        }
+    </script>
+</body>
+</html>

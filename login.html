@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="signup-link">
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Get stored user data from localStorage
+            const storedUser = localStorage.getItem(username);
+
+            if (storedUser) {
+                const userData = JSON.parse(storedUser); // Parse stored user data
+
+                // Check if entered password matches the stored password
+                if (userData.password === password) {
+                    alert('Login successful!');
+                    window.location.href = 'dashboard.html'; // Redirect to dashboard
+                } else {
+                    alert('Incorrect password. Please try again.');
+                }
+            } else {
+                alert('User not found. Please sign up first.');
+                window.location.href = 'signup.html'; // Redirect to sign-up page
+            }
+        });
+    </script>
+</body>
+</html>

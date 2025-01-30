@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Trends in Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .trend-card {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .trend-card h3 {
+            color: #0073e6;
+        }
+
+        .trend-card p {
+            font-size: 16px;
+        }
+
+        .graph-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .graph-container iframe {
+            border: none;
+            border-radius: 8px;
+        }
+
+        .case-study {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #0073e6;
+        }
+
+        .case-study h4 {
+            color: #0073e6;
+        }
+
+        .buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .button:hover {
+            background-color: #005bb5;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Exploring Industry Trends in Emerging Technologies</h1>
+</header>
+
+<div class="container">
+    <!-- Industry Trends Section -->
+    <div class="trend-card" id="trend-vlsi">
+        <h3>VLSI (Very Large Scale Integration) Trends</h3>
+        <p>VLSI technology continues to shape the future of microelectronics, from AI chips to quantum computing. As demand for smaller, more powerful devices increases, advancements in fabrication technology are pushing the boundaries of chip design.</p>
+        <div class="graph-container">
+            <iframe src="https://www.maximizemarketresearch.com/wp-content/uploads/2021/11/VLSI-Semiconductor-Market1.webp" width="600" height="400"></iframe>
+        </div>
+    </div>
+
+    <div class="trend-card" id="trend-aiml">
+        <h3>AIML (Artificial Intelligence & Machine Learning) Trends</h3>
+        <p>The AI & ML revolution is driving innovation across industries like healthcare, automotive, and finance. Predictive analytics, deep learning, and autonomous systems are at the core of this transformation.</p>
+        <div class="graph-container">
+            <iframe src="https://www.grandviewresearch.com/static/img/research/global-artificial-intelligence-market.png" width="600" height="400"></iframe>
+        </div>
+    </div>
+
+    <!-- Case Study Section -->
+    <div class="case-study">
+        <h4>Case Study: AI in Healthcare</h4>
+        <p>AI technologies, including deep learning and predictive analytics, are revolutionizing healthcare by enabling early detection of diseases, improving patient outcomes, and streamlining administrative processes.</p>
+        <p><strong>Real-World Example:</strong> IBM Watson for Oncology is helping doctors analyze large sets of medical data to provide better treatment plans for cancer patients. This case highlights how AI's ability to process complex medical data can assist in critical decision-making processes.</p>
+    </div>
+
+    <div class="case-study">
+        <h4>Case Study: VLSI in Smartphone Technology</h4>
+        <p>VLSI technology has significantly advanced the design of smartphones. With each new generation, chips become smaller, faster, and more energy-efficient. Companies like Qualcomm and Apple are at the forefront of this development.</p>
+        <p><strong>Real-World Example:</strong> Apple's A15 Bionic chip, featured in their iPhone 13, uses VLSI to integrate 15 billion transistors into a single chip, enabling faster processing and improved graphics performance while consuming less power.</p>
+    </div>
+
+    <!-- Interactive Polls Section -->
+    <div class="buttons">
+        <button class="button" onclick="showPoll('vlsi')">Vote on VLSI Trends</button>
+        <button class="button" onclick="showPoll('aiml')">Vote on AIML Trends</button>
+    </div>
+
+    <div id="poll-vlsi" style="display:none;">
+        <p><strong>What do you think is the most exciting development in VLSI?</strong></p>
+        <form>
+            <label><input type="radio" name="vlsi" value="quantum_computing"> Quantum Computing</label><br>
+            <label><input type="radio" name="vlsi" value="5g_chips"> 5G Chips</label><br>
+            <label><input type="radio" name="vlsi" value="ai_processors"> AI Processors</label><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="poll-aiml" style="display:none;">
+        <p><strong>What do you think is the next big thing in AIML?</strong></p>
+        <form>
+            <label><input type="radio" name="aiml" value="automated_driving"> Automated Driving</label><br>
+            <label><input type="radio" name="aiml" value="personalized_ai"> Personalized AI</label><br>
+            <label><input type="radio" name="aiml" value="ai_in_healthcare"> AI in Healthcare</label><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    function showPoll(trend) {
+        if (trend === 'vlsi') {
+            document.getElementById('poll-vlsi').style.display = 'block';
+            document.getElementById('poll-aiml').style.display = 'none';
+        } else if (trend === 'aiml') {
+            document.getElementById('poll-aiml').style.display = 'block';
+            document.getElementById('poll-vlsi').style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #34495e;
+    padding-left: 10px;
+  }
+  
+  /* Filter Dropdown */
+  label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  #career-filter {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  /* Search Bar */
+  #search-bar {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+  }
+  
+  /* Toggle Button */
+  .toggle-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  /* Sidebar Toggle Effect */
+  .sidebar.active {
+    transform: translateX(-100%);
+  }
+  

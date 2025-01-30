@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Workshop and Webinar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #2980b9;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        #qa-form, #resources {
+            display: none;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        #agenda ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #agenda li {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        #agenda .completed {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .resource-list a {
+            display: block;
+            margin: 5px 0;
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+
+        .progress-bar-container {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Interactive Workshop and Webinar</h1>
+
+    <!-- Interactive Agenda -->
+    <h2>Workshop Agenda</h2>
+    <div id="agenda">
+        <ul>
+            <li class="agenda-item" onclick="markComplete(0)">Introduction to VLSI</li>
+            <li class="agenda-item" onclick="markComplete(1)">Deep Dive into Full Stack Development</li>
+            <li class="agenda-item" onclick="markComplete(2)">Exploring AIML Concepts</li>
+            <li class="agenda-item" onclick="markComplete(3)">Communications and Future Technologies</li>
+        </ul>
+    </div>
+
+    <!-- Q&A Section -->
+    <h2>Ask a Question</h2>
+    <button onclick="showQAForm()">Ask about VLSI</button>
+    <button onclick="showQAForm()">Ask about AIML</button>
+
+    <div id="qa-form">
+        <h3>Submit your question:</h3>
+        <textarea id="question-text" placeholder="Type your question"></textarea>
+        <button onclick="submitQuestion()">Submit Question</button>
+    </div>
+
+    <!-- Resources Section -->
+    <h2>Download Resources</h2>
+    <button onclick="showResources('VLSI')">VLSI Resources</button>
+    <button onclick="showResources('AIML')">AIML Resources</button>
+
+    <div id="resources">
+        <div id="vlsi-resources" class="resource-list">
+            <a href="VLSI_Slides.pdf" download>Download VLSI Slides</a>
+            <a href="VLSI_Code.zip" download>Download VLSI Code</a>
+        </div>
+        <div id="aiml-resources" class="resource-list">
+            <a href="AIML_Slides.pdf" download>Download AIML Slides</a>
+            <a href="AIML_Code.zip" download>Download AIML Code</a>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <h2>Progress</h2>
+    <div class="progress-bar-container">
+        <div class="progress-bar">
+            <div class="progress-bar-inner" id="progress-bar-inner"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let completedAgenda = [false, false, false, false];
+
+    function markComplete(index) {
+        if (!completedAgenda[index]) {
+            completedAgenda[index] = true;
+            document.querySelectorAll('.agenda-item')[index].classList.add('completed');
+            updateProgressBar();
+        }
+    }
+
+    function updateProgressBar() {
+        let completedCount = completedAgenda.filter(status => status === true).length;
+        let progress = (completedCount / completedAgenda.length) * 100;
+        document.getElementById('progress-bar-inner').style.width = progress + '%';
+    }
+
+    function showQAForm() {
+        document.getElementById('qa-form').style.display = 'block';
+    }
+
+    function submitQuestion() {
+        let question = document.getElementById('question-text').value;
+        alert("Your question has been submitted: " + question);
+        document.getElementById('qa-form').style.display = 'none';
+    }
+
+    function showResources(topic) {
+        document.getElementById('vlsi-resources').style.display = 'none';
+        document.getElementById('aiml-resources').style.display = 'none';
+
+        if (topic === 'VLSI') {
+            document.getElementById('vlsi-resources').style.display = 'block';
+        } else if (topic === 'AIML') {
+            document.getElementById('aiml-resources').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>

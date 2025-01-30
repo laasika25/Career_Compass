@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Failure & Success Stories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: bold;
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1em;
+            width: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .links {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .links li {
+            margin: 15px;
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .links li:hover {
+            transform: translateY(-10px);
+        }
+        .links img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+        .link-content {
+            padding: 15px;
+        }
+        .link-content h3 {
+            font-size: 1.1em;
+            margin: 0;
+            color: #333;
+        }
+        .link-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 10px 0;
+        }
+        .link-content a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="failures-recovery.css">
+</head>
+<body>
+
+    <h1>Failure & Success Stories</h1>
+    
+    <label for="domainSelect">Select Domain:</label>
+    <select id="domainSelect" onchange="filterLinks()">
+        <option value="">--Select a domain--</option>
+        <option value="vlsi">VLSI</option>
+        <option value="aiml">AIML</option>
+        <option value="fullstack">Full Stack</option>
+        <option value="communications">Communications</option>
+    </select>
+    
+    <ul class="links" id="linksList">
+        <!-- Links will appear here based on the selection -->
+    </ul>
+    <a href="dashboard.html" class="btn">Go Back to Dashboard</a>
+
+    <script>
+        function filterLinks() {
+            const selectedDomain = document.getElementById('domainSelect').value;
+            const linksList = document.getElementById('linksList');
+            linksList.innerHTML = ""; // Clear previous links
+
+            let links = [];
+
+            if (selectedDomain === "vlsi") {
+                links = [
+                    { 
+                        text: "How to overcome obstacles while starting your career in VLSI", 
+                        url: "https://www.linkedin.com/pulse/how-overcome-obstacles-while-starting-your-career-vlsi-sriharsha-pudi/", 
+                        thumbnail: "https://www.takshila-vlsi.com/wp-content/uploads/2024/07/2147883616-1-840x430.jpg"
+                    },
+                    { 
+                        text: "Top 5 reasons to pursue a career in VLSI design", 
+                        url: "https://www.takshila-vlsi.com/top-5-reasons-to-pursue-a-career-in-vlsi-design/#:~:text=One%20of%20the%20main%20reasons,technologies%20and%20improve%20current%20ones.", 
+                        thumbnail: "https://www.tessolve.com/wp-content/uploads/2023/12/memory-testing-post.jpg"
+                    },
+                    { 
+                        text: "Mantra for success in VLSI", 
+                        url: "https://www.vlsi-expert.com/2017/09/mantra-for-success.html", 
+                        thumbnail: "https://www.takshila-vlsi.com/wp-content/uploads/2025/01/Career-in-VLSI-840x430.jpg" 
+                    },
+                    { 
+                        text: "VLSI Career Guiding Video", 
+                        url: "https://youtu.be/f8mYGcpfv2w?si=Vf9CWOgl5KjGayLv",  // Replace with the actual video URL
+                        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRTAd1Jo3pjb7oVctDLE-eO4ci8tqzpRPXvA&s" 
+                    }
+                ];
+            } else if (selectedDomain === "aiml") {
+                links = [
+                    { 
+                        text: "Introduction to AI and Machine Learning", 
+                        url: "https://www.example.com/aiml-intro", 
+                        thumbnail: "https://via.placeholder.com/300x200/007BFF/FFFFFF?text=AIML" 
+                    },
+                    { 
+                        text: "Machine Learning: Success and Challenges", 
+                        url: "https://www.example.com/aiml-success", 
+                        thumbnail: "https://via.placeholder.com/300x200/007BFF/FFFFFF?text=ML+Challenges" 
+                    }
+                ];
+            } else if (selectedDomain === "fullstack") {
+                links = [
+                    { 
+                        text: "Building Full Stack Applications: A Guide", 
+                        url: "https://www.example.com/fullstack-guide", 
+                        thumbnail: "https://via.placeholder.com/300x200/FF5722/FFFFFF?text=Full+Stack" 
+                    },
+                    { 
+                        text: "Success Stories in Full Stack Development", 
+                        url: "https://www.example.com/fullstack-success", 
+                        thumbnail: "https://via.placeholder.com/300x200/FF5722/FFFFFF?text=Full+Stack+Success" 
+                    }
+                ];
+            } else if (selectedDomain === "communications") {
+                links = [
+                    { 
+                        text: "Success in Communications Engineering", 
+                        url: "https://www.example.com/communications-success", 
+                        thumbnail: "https://via.placeholder.com/300x200/FFC107/FFFFFF?text=Comm+Engineering" 
+                    },
+                    { 
+                        text: "Overcoming Challenges in Communication Systems", 
+                        url: "https://www.example.com/communications-challenges", 
+                        thumbnail: "https://via.placeholder.com/300x200/FFC107/FFFFFF?text=Comm+Challenges" 
+                    }
+                ];
+            }
+
+            // Display the links
+            links.forEach(link => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                const img = document.createElement("img");
+                const div = document.createElement("div");
+
+                img.src = link.thumbnail;
+                img.alt = link.text;
+
+                div.className = "link-content";
+                div.innerHTML = `<h3>${link.text}</h3><p>Click to read more</p><a href="${link.url}" target="_blank">Go to Link</a>`;
+
+                li.appendChild(img);
+                li.appendChild(div);
+                linksList.appendChild(li);
+            });
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship & Job Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section h2 {
+            color: #34495e;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .filter-section select,
+        .filter-section input[type="text"],
+        .filter-section button {
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 250px;
+        }
+
+        .filter-section button {
+            background-color: #2c3e50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-section button:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Job Listings Section */
+        .job-listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .job-listing {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .job-listing:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .job-listing h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .job-listing p {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .job-listing button {
+            padding: 10px 20px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .job-listing button:hover {
+            background-color: #1abc9c;
+        }
+
+        /* LinkedIn Posts Section */
+        .linkedin-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .linkedin-post {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .linkedin-post h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .linkedin-post p {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .linkedin-post iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+        }
+
+        .footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Internship & Job Portal</h1>
+</header>
+
+<div class="container">
+    <!-- Internship & Job Search Filters -->
+    <div class="section">
+        <h2>Search for Jobs and Internships</h2>
+        <div class="filter-section">
+            <!-- Job Type Filter -->
+            <select id="job-type-filter">
+                <option value="">Select Job Type</option>
+                <option value="full-time">Full-time</option>
+                <option value="part-time">Part-time</option>
+                <option value="internship">Internship</option>
+            </select>
+
+            <!-- Location Filter -->
+            <input type="text" id="location-filter" placeholder="Location" />
+
+            <!-- Search Button -->
+            <button onclick="filterJobs()">Search</button>
+        </div>
+    </div>
+
+    <!-- Job Listings Section -->
+    <div class="section" id="job-listings">
+        <h2>Job Listings</h2>
+        <div class="job-listings">
+            <!-- Example Job Listing -->
+            <div class="job-listing">
+                <h3>VLSI - Full-time</h3>
+                <p>Location: Bengaluru, Karnataka</p>
+                <p>Company: Cadence Ltd</p>
+                <button><a href="https://www.naukri.com/job-listings/software-engineer-full-time-xyz-tech-pvt-ltd-bengaluru-karnataka-12345" target="_blank" style="color: white; text-decoration: none;">Apply Now</a></button>
+            </div>
+            <div class="job-listing">
+                <h3>Internship - Data Science</h3>
+                <p>Location: Hyderabad, Telangana</p>
+                <p>Google</p>
+                <button><a href="https://www.naukri.com/job-listings/internship-data-science-abc-analytics-hyderabad-telangana-67890" target="_blank" style="color: white; text-decoration: none;">Apply Now</a></button>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <p>&copy; 2025 Internship & Job Portal. All rights reserved.</p>
+</footer>
+
+<script>
+    function filterJobs() {
+        var jobType = document.getElementById('job-type-filter').value;
+        var location = document.getElementById('location-filter').value.toLowerCase();
+
+        // Mockup filter functionality: Implement real filtering logic here
+        console.log('Filtering jobs for:', jobType, location);
+
+        // You can replace the job listings with filtered data from an API
+        alert('Job listings filtered by type: ' + jobType + ' and location: ' + location);
+    }
+</script>
+
+</body>
+</html>

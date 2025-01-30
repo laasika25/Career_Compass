@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- Google Charts API -->
+    <title>CareerCompass Dashboard</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+      body {
+        font-family: "Itim", cursive;
+      }
+
+      /* Sliding effect for the sidebar */
+      #sidebar {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      /* Hidden state of the sidebar */
+      #sidebar.hidden {
+        transform: translateX(-100%);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-gray-100 overflow-x-hidden">
+    <header class="p-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <button id="menuButton" class="text-gray-100 text-3xl lg:hidden hover:text-gray-400">
+          <i class="bx bx-menu"></i>
+        </button>
+        <div class="flex items-center gap-2 text-teal-400 cursor-pointer">
+          <i class="bx bx-briefcase text-3xl"></i>
+          <span class="text-xl font-semibold">CareerCompass</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <span id="username" class="text-gray-300 font-medium"></span>
+        <img src="../src/user.png" alt="User Avatar" class="w-10 h-10 rounded-full border border-gray-600" />
+        <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm">Logout</button>
+      </div>
+    </header>
+
+    <div class="flex">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="w-64 bg-gray-800 p-4 fixed h-full">
+        <nav class="space-y-3">
+          <button onclick="navigateTo('dashboard.html')" class="w-full flex items-center space-x-3 text-gray-300 bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-home-alt text-teal-400"></i> <span>Dashboard</span>
+          </button>
+          <button onclick="navigateTo('salary.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-money text-teal-400"></i> <span>Salary</span>
+          </button>
+          <button onclick="navigateTo('learning-resources.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-book text-teal-400"></i> <span>Learning Resources</span>
+          </button>
+          <button onclick="navigateTo('industry-trends.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-trending-up text-teal-400"></i> <span>Industry Trends</span>
+          </button>
+          <button onclick="navigateTo('job-portal.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-briefcase text-teal-400"></i> <span>Internship & Job Portal</span>
+          </button>
+          <button onclick="navigateTo('workshops.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-calendar-event text-teal-400"></i> <span>Workshops & Webinars</span>
+          </button>
+          <button onclick="navigateTo('failures-recovery.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-medal text-teal-400"></i> <span>Failures & Recovery Stories</span>
+          </button>
+          <button onclick="navigateTo('settings.html')" class="w-full flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-md">
+            <i class="bx bx-cog text-teal-400"></i> <span>Settings</span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-gray-900 ml-64 p-6">
+        <section class="bg-gray-800 p-5 rounded-lg">
+          <h2 class="text-lg font-semibold text-gray-100">Welcome to Your Dashboard</h2>
+          <p class="text-gray-400 mt-2">Manage your career growth, track progress, and access learning resources all in one place.</p>
+        </section>
+
+        <!-- Motivational Quote Section -->
+        <section class="bg-gray-800 p-5 rounded-lg mt-6">
+          <h3 class="text-lg font-semibold text-gray-100">Motivational Quote</h3>
+          <p class="text-gray-400 italic mt-2">"If opportunity doesn't knock, build a door" - Milton Berle</p>
+        </section>
+        
+        <!-- Industry Trends Graph Section -->
+        <section class="bg-gray-800 p-5 rounded-lg mt-6">
+          <h2 class="text-lg font-semibold text-gray-100">Industry Trends</h2>
+          <div id="industryChart" class="mt-4"></div> <!-- Placeholder for the graph -->
+        </section>
+      </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Load username from localStorage
+      document.addEventListener("DOMContentLoaded", function () {
+        const username = localStorage.getItem("username") || "Guest";
+        document.getElementById("username").textContent = username;
+      });
+
+      // Navigation function
+      function navigateTo(page) {
+        window.location.href = page;
+      }
+
+      // Logout function
+      function logout() {
+        localStorage.removeItem("username"); // Clear username from storage
+        window.location.href = "login.html"; // Redirect to login page
+      }
+
+      // Load Google Charts and draw the Industry Trends graph
+      google.charts.load('current', {
+        packages: ['corechart', 'line']
+      });
+
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Year');
+        data.addColumn('number', 'Salary Trends');
+        data.addColumn('number', 'Job Openings');
+
+        // Sample data for the chart (you can replace this with real data)
+        data.addRows([
+          ['2018', 1000, 200],
+          ['2019', 1170, 250],
+          ['2020', 660, 300],
+          ['2021', 1030, 350],
+          ['2022', 1200, 400]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Industry Trends (Salary & Job Openings)',
+            subtitle: 'Trends of salary and job openings in tech industry',
+          },
+          width: '100%',
+          height: 400,
+          hAxis: {
+            title: 'Year',
+          },
+          vAxis: {
+            title: 'Value',
+          },
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('industryChart'));
+        chart.draw(data, options);
+      }
+
+      // Sidebar Toggle Function
+      const menuButton = document.getElementById("menuButton");
+      const sidebar = document.getElementById("sidebar");
+
+      menuButton.addEventListener("click", function () {
+        sidebar.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
